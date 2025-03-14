@@ -1,0 +1,53 @@
+*{
+    margin: 0;padding: 0;
+    box-sizing: border-box;
+}
+
+.bdForm {
+  margin: auto;
+    border-radius: 8px;
+    border: 1px solid rgba(144, 142, 142, 0.66);
+    padding: 2rem;
+    width: 80%;
+    min-width: 250px;
+    max-width: 700px;
+    background-color: #fbf8f8;
+
+  }
+
+
+  .bdForm label {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    line-height: 1.5; 
+    display: inline-block; 
+    overflow: visible;
+    max-width: 100%; 
+}
+
+.butn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.butn button{
+    padding: 0.5rem 1rem;
+    margin: 1rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #194ff0;
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+
+
+
+
+
+

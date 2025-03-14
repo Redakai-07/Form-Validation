@@ -1,23 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import BankDetails from './Component/BankDetails/BankDetails';
+import VenderServices from './Component/VenderServices/VenderServices';
+import VendorDetails from './Component/VendorDetails/VendorDetails';
+import Modals from './Component/BankDetails/Modals';
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+      <Routes>
+        <Route path="/" element={<VendorDetails />} />
+        <Route path="/bank-details" element={<BankDetails />} />
+        <Route path="/modals" element={<Modals />} />
+        <Route path='/vendor-service' element={<VenderServices />} />
+      </Routes>
+    </Router>
     </div>
   );
 }

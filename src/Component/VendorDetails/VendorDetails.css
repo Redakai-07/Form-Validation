@@ -1,0 +1,127 @@
+*{
+    margin: 0;padding: 0;
+    box-sizing: border-box;
+}
+
+.vDetails{
+    margin: 2rem;
+}
+
+.vdStep{
+    width: 100%;
+    padding: 2rem 20rem;
+}
+
+.heading{
+    color: rgb(76, 76, 165);
+    font-weight: 600;
+}
+
+.subheading{
+    text-align: left;
+}
+
+.vdForm{
+    max-width: 1250px;
+    min-width: 250px;
+    position: relative;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid rgba(144, 142, 142, 0.66);
+    padding: 2rem;
+    background-color: #fbf8f8;
+    margin: auto;
+}
+
+.vdForm label {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    line-height: 1.5; 
+    display: inline-block; 
+    overflow: visible;
+    max-width: 100%; 
+}
+
+
+.companyDetails{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    width: 100%;
+    gap: 1rem;
+    padding: 0rem 1rem;
+}
+
+.companyDetail{
+    min-width: 250px;
+    width: 100%;
+}
+
+
+
+.contactInfos{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem; 
+    width: 100%;
+    padding: 0 1rem;
+    
+}
+
+
+.contactInfos2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    width: 100%;
+    gap: 1rem;
+    padding: 0rem 1rem;
+}
+
+.contactInfos3{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 100%;
+    gap: 1rem;
+    padding: 0rem 1rem;
+}
+
+.contactInfo{
+    min-width: 250px;
+    width: 100%;
+}
+
+#id{
+    width: 100%;
+}
+
+.select{
+    text-align: left;
+}
+
+
+
+
+
+@media (max-width: 1024px) {
+    .companyDetails,
+    .contactInfos {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media (max-width: 768px) {
+    .companyDetails,
+    .contactInfos {
+        grid-template-columns: 1fr; 
+    }
+}
+
+
+.statutories{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem; 
+    width: 100%;
+    padding: 0 1rem;
+}
+

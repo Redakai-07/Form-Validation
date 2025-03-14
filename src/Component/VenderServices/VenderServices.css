@@ -1,0 +1,97 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Arial", sans-serif;
+    background: #f9f9f9;
+    color: #333;
+}
+
+
+
+/* Container styling */
+.vsContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Heading */
+  .heading {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+  }
+  
+  /* Steps component */
+  .vdStep {
+    margin-bottom: 30px;
+  }
+  
+  /* Form container */
+  .vsForm {
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: "Arial", sans-serif;
+  }
+  
+  /* Form headings */
+  .vsForm h1 {
+    font-size: 1.8rem;
+    color: #444;
+    margin-bottom: 20px;
+  }
+  
+  .vsForm h3 {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 15px;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .vsContainer {
+      padding: 10px;
+    }
+  
+    .heading {
+      font-size: 1.5rem;
+    }
+  
+    .vsForm {
+      padding: 20px;
+    }
+  
+    .vsForm h1 {
+      font-size: 1.5rem;
+    }
+  
+    .vsForm h3 {
+      font-size: 1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .heading {
+      font-size: 1.3rem;
+    }
+  
+    .vsForm {
+      padding: 15px;
+    }
+  
+    .vsForm h1 {
+      font-size: 1.3rem;
+    }
+  
+    .vsForm h3 {
+      font-size: 0.9rem;
+    }
+  }
+  
