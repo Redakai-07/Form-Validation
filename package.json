@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^13.5.0",
     "antd": "^5.24.3",
     "country-state-city": "^3.2.1",
+    "libphonenumber-js": "^1.11.9",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-redux": "^9.2.0",

@@ -1,97 +1,307 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
-body {
-    font-family: "Arial", sans-serif;
-    background: #f9f9f9;
-    color: #333;
-}
-
-
 
 /* Container styling */
 .vsContainer {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-  }
-  
-  /* Heading */
-  .heading {
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 30px;
-    color: #333;
-  }
-  
-  /* Steps component */
-  .vdStep {
-    margin-bottom: 30px;
-  }
-  
-  /* Form container */
-  .vsForm {
     background: #f9f9f9;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    font-family: "Arial", sans-serif;
-  }
+    min-height: 100vh;
+}
+
+/* Header section */
+.vs-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.heading {
+    font-size: 2rem;
+    margin-bottom: 24px;
+    color: #1890ff;
+    font-weight: 600;
+}
+
+.vdStep {
+    width: 100%;
+    padding: 0 20px;
+    margin-bottom: 24px;
+}
+
+/* Content section */
+.vs-content {
+    max-width: 100%;
+}
+
+/* Intro card */
+.intro-card {
+    margin-bottom: 24px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    text-align: center;
+}
+
+.intro-card .ant-card-body {
+    padding: 24px;
+}
+
+/* Service category cards */
+.service-category-card {
+    height: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+    border: 1px solid #e8e8e8;
+}
+
+.service-category-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    border-color: #1890ff;
+    transform: translateY(-2px);
+}
+
+.service-category-card .ant-card-head {
+    border-bottom: 1px solid #f0f0f0;
+    padding: 16px 20px;
+}
+
+.service-category-card .ant-card-body {
+    padding: 20px;
+}
+
+/* Category header */
+.category-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.category-icon {
+    font-size: 18px;
+    color: #1890ff;
+}
+
+.category-title {
+    font-weight: 600;
+    color: #262626;
+    font-size: 16px;
+}
+
+.category-description {
+    display: block;
+    margin-bottom: 16px;
+    line-height: 1.5;
+}
+
+/* Services list */
+.services-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.service-item {
+    padding: 8px 0;
+    border-bottom: 1px solid #fafafa;
+}
+
+.service-item:last-child {
+    border-bottom: none;
+}
+
+.service-checkbox {
+    width: 100%;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.service-checkbox .ant-checkbox {
+    margin-right: 8px;
+}
+
+.service-checkbox:hover {
+    color: #1890ff;
+}
+
+/* Actions section */
+.vs-actions {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.back-button,
+.submit-button {
+    min-width: 140px;
+    height: 48px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 6px;
+}
+
+.submit-button {
+    background: #1890ff;
+    border-color: #1890ff;
+}
+
+.submit-button:hover:not(:disabled) {
+    background: #40a9ff;
+    border-color: #40a9ff;
+}
+
+.submit-button:disabled {
+    background: #f5f5f5;
+    border-color: #d9d9d9;
+    color: #bfbfbf;
+}
+
+.selected-count {
+    margin-top: 16px;
+    text-align: center;
+}
+
+/* Success modal */
+.success-modal .ant-modal-body {
+    padding: 32px;
+    text-align: center;
+}
   
-  /* Form headings */
-  .vsForm h1 {
-    font-size: 1.8rem;
-    color: #444;
-    margin-bottom: 20px;
-  }
-  
-  .vsForm h3 {
-    font-size: 1.2rem;
-    color: #555;
-    margin-bottom: 15px;
-  }
-  
-  /* Responsive design */
-  @media (max-width: 768px) {
+/* Mobile responsiveness */
+@media (max-width: 768px) {
     .vsContainer {
-      padding: 10px;
+        padding: 16px;
     }
-  
+
     .heading {
-      font-size: 1.5rem;
+        font-size: 1.8rem;
+        margin-bottom: 20px;
     }
-  
-    .vsForm {
-      padding: 20px;
+
+    .vdStep {
+        padding: 0 8px;
+        margin-bottom: 20px;
     }
-  
-    .vsForm h1 {
-      font-size: 1.5rem;
+
+    .intro-card .ant-card-body {
+        padding: 20px;
     }
-  
-    .vsForm h3 {
-      font-size: 1rem;
+
+    .service-category-card .ant-card-body {
+        padding: 16px;
     }
-  }
-  
-  @media (max-width: 480px) {
+
+    .category-icon {
+        font-size: 16px;
+    }
+
+    .category-title {
+        font-size: 15px;
+    }
+
+    .service-checkbox {
+        font-size: 13px;
+    }
+
+    .vs-actions {
+        margin-top: 32px;
+    }
+
+    .back-button,
+    .submit-button {
+        min-width: 120px;
+        height: 44px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .vsContainer {
+        padding: 12px;
+    }
+
     .heading {
-      font-size: 1.3rem;
+        font-size: 1.5rem;
+        margin-bottom: 16px;
     }
-  
-    .vsForm {
-      padding: 15px;
+
+    .vdStep {
+        padding: 0 4px;
+        margin-bottom: 16px;
     }
-  
-    .vsForm h1 {
-      font-size: 1.3rem;
+
+    .intro-card .ant-card-body {
+        padding: 16px;
     }
-  
-    .vsForm h3 {
-      font-size: 0.9rem;
+
+    .service-category-card {
+        margin-bottom: 16px;
     }
-  }
+
+    .service-category-card .ant-card-head {
+        padding: 12px 16px;
+    }
+
+    .service-category-card .ant-card-body {
+        padding: 12px;
+    }
+
+    .category-header {
+        gap: 6px;
+    }
+
+    .category-icon {
+        font-size: 14px;
+    }
+
+    .category-title {
+        font-size: 14px;
+    }
+
+    .category-description {
+        font-size: 12px;
+        margin-bottom: 12px;
+    }
+
+    .services-list {
+        gap: 8px;
+    }
+
+    .service-item {
+        padding: 6px 0;
+    }
+
+    .service-checkbox {
+        font-size: 12px;
+    }
+
+    .vs-actions {
+        margin-top: 24px;
+    }
+
+    .vs-actions .ant-row {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .back-button,
+    .submit-button {
+        width: 100%;
+        min-width: auto;
+        height: 48px;
+        font-size: 16px;
+    }
+
+    .selected-count {
+        margin-top: 12px;
+        font-size: 12px;
+    }
+
+    /* Mobile modal adjustments */
+    .success-modal .ant-modal-body {
+        padding: 24px 16px;
+    }
+}
   

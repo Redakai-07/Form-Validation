@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Input, Select, Steps, Button, Row, Col } from "antd";
 import "./VendorDetails.css";
 import { Country, State } from "country-state-city";
@@ -6,6 +6,7 @@ import ReactSelect from "react-select";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { saveFormData } from "../../slice.js";
+import { getCountries, getCountryCallingCode } from "libphonenumber-js";
 
 const VendorDetails = () => {
   const navigate = useNavigate();
@@ -14,6 +15,20 @@ const VendorDetails = () => {
   const { Option } = Select;
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [states, setStates] = useState([]);
+  const [selectedPhoneCountry, setSelectedPhoneCountry] = useState("IN"); // Default to India
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Handle responsive design
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    handleResize(); // Set initial value
+    window.addEventListener('resize', handleResize);
+    
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
 
   const goToBankDetails = async (values) => {
@@ -34,25 +49,76 @@ const VendorDetails = () => {
   const handleCountryChange = (selectedOption) => {
     setSelectedCountry(selectedOption);
     const countryCode = selectedOption ? selectedOption.isoCode : null;
-    setStates(State.getStatesOfCountry(countryCode));
+    const countryStates = State.getStatesOfCountry(countryCode);
+    
+    // If no states available, provide "NA" option
+    if (countryStates && countryStates.length === 0) {
+      setStates([{
+        name: "NA (Not Applicable)",
+        isoCode: "NA"
+      }]);
+    } else {
+      setStates(countryStates || []);
+    }
+    
     form.setFieldsValue({ state: null });
+    
+    // Sync phone country with address country
+    if (countryCode) {
+      setSelectedPhoneCountry(countryCode);
+      form.setFieldsValue({ phoneCountry: countryCode });
+    }
   };
 
   const handleStateChange = (selectedOption) => {
     form.setFieldsValue({ state: selectedOption });
   };
 
-  
+  // Generate country options for phone prefix selector
+  const getPhoneCountryOptions = () => {
+    const countries = getCountries();
+    return countries.map(countryCode => {
+      const callingCode = getCountryCallingCode(countryCode);
+      const countryInfo = Country.getCountryByCode(countryCode);
+      return {
+        value: countryCode,
+        label: `+${callingCode}`,
+        country: countryInfo?.name || countryCode,
+      };
+    }).filter(option => option.country); // Filter out countries without names
+  };
+
   const prefixSelector = (
-    <Form.Item name="prefix" noStyle>
+    <Form.Item name="phoneCountry" noStyle>
       <Select
         style={{
-          width: 70,
+          width: 90,
+          minWidth: 80,
         }}
+        value={selectedPhoneCountry}
+        onChange={(value) => setSelectedPhoneCountry(value)}
+        showSearch
+        optionFilterProp="children"
+        filterOption={(input, option) =>
+          option?.children?.toLowerCase().includes(input.toLowerCase()) ||
+          option?.country?.toLowerCase().includes(input.toLowerCase())
+        }
+        dropdownStyle={{
+          maxHeight: 300,
+          overflow: 'auto'
+        }}
+        size="large"
       >
-        <Option value="91">+91</Option>
-        <Option value="86">+86</Option>
-        <Option value="87">+87</Option>
+        {getPhoneCountryOptions().map(option => (
+          <Option 
+            key={option.value} 
+            value={option.value}
+            country={option.country}
+            title={`${option.country} ${option.label}`}
+          >
+            {option.label}
+          </Option>
+        ))}
       </Select>
     </Form.Item>
   );
@@ -89,6 +155,8 @@ const VendorDetails = () => {
             className="vdStep"
             progressDot
             current={0}
+            direction={isMobile ? "vertical" : "horizontal"}
+            size={isMobile ? "small" : "default"}
             items={[
               { title: "Vendor Details" },
               { title: "Bank Details" },
@@ -104,7 +172,7 @@ const VendorDetails = () => {
             scrollToFirstError
             name="vendorForm"
             layout="vertical"
-            initialValues={{ prefix: "91" }}
+            initialValues={{ phoneCountry: "IN" }}
             onFinishFailed={({ errorFields }) => {
               if (errorFields.length > 0) {
                 form.scrollToField(errorFields[0].name);
@@ -310,8 +378,8 @@ const VendorDetails = () => {
                       message: "Please input your phone number!",
                     },
                     {
-                      pattern: /^[6-9][0-9]{9}$/,
-                      message: `Enter a valid mobile number`,
+                      pattern: /^[0-9]{6,15}$/,
+                      message: `Enter a valid mobile number (6-15 digits)`,
                     },
                   ]}
                 >
@@ -331,8 +399,8 @@ const VendorDetails = () => {
                   label={altmob}
                   rules={[
                     {
-                      pattern: /^[6-9][0-9]{9}$/,
-                      message: `Enter a valid mobile number`,
+                      pattern: /^[0-9]{6,15}$/,
+                      message: `Enter a valid mobile number (6-15 digits)`,
                     },
                   ]}
                 >
@@ -380,7 +448,7 @@ const VendorDetails = () => {
                   <ReactSelect
                     options={states.map((s) => ({
                       label: s.name,
-                      value: s.isoCode,
+                      value: s.isoCode || s.name,
                     }))}
                     onChange={handleStateChange}
                     placeholder="Select State"

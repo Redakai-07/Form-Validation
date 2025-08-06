@@ -7,9 +7,35 @@
     margin: 2rem;
 }
 
+/* Mobile optimization for main container */
+@media (max-width: 768px) {
+    .vDetails {
+        margin: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .vDetails {
+        margin: 0.5rem;
+    }
+}
+
 .vdStep{
     width: 100%;
     padding: 2rem 20rem;
+}
+
+/* Mobile optimization for steps */
+@media (max-width: 768px) {
+    .vdStep {
+        padding: 1rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .vdStep {
+        padding: 0.5rem 0.5rem;
+    }
 }
 
 .heading{
@@ -19,6 +45,32 @@
 
 .subheading{
     text-align: left;
+}
+
+/* Mobile optimization for headings */
+@media (max-width: 768px) {
+    .heading {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+    
+    .subheading {
+        font-size: 1.3rem;
+        margin-top: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .heading {
+        font-size: 1.5rem;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    
+    .subheading {
+        font-size: 1.2rem;
+        margin-top: 1rem;
+    }
 }
 
 .vdForm{
@@ -33,6 +85,24 @@
     margin: auto;
 }
 
+/* Mobile optimization for form */
+@media (max-width: 768px) {
+    .vdForm {
+        padding: 1.5rem;
+        border-radius: 4px;
+    }
+}
+
+@media (max-width: 480px) {
+    .vdForm {
+        padding: 1rem;
+        margin: 0;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+    }
+}
+
 .vdForm label {
     font-size: 1.2rem;
     font-weight: 500;
@@ -41,6 +111,20 @@
     display: inline-block; 
     overflow: visible;
     max-width: 100%; 
+}
+
+/* Mobile optimization for labels */
+@media (max-width: 768px) {
+    .vdForm label {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .vdForm label {
+        font-size: 1rem;
+        margin-bottom: 0.3rem;
+    }
 }
 
 
@@ -104,15 +188,38 @@
 
 @media (max-width: 1024px) {
     .companyDetails,
-    .contactInfos {
+    .contactInfos,
+    .statutories {
         grid-template-columns: repeat(2, 1fr); 
+    }
+    
+    .contactInfos3 {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 768px) {
     .companyDetails,
-    .contactInfos {
+    .contactInfos,
+    .statutories {
         grid-template-columns: 1fr; 
+    }
+    
+    .contactInfos2,
+    .contactInfos3 {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .companyDetails,
+    .contactInfos,
+    .contactInfos2,
+    .contactInfos3,
+    .statutories {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+        padding: 0;
     }
 }
 
@@ -123,5 +230,52 @@
     gap: 1rem; 
     width: 100%;
     padding: 0 1rem;
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 768px) {
+    /* Improve touch targets */
+    .ant-input,
+    .ant-select-selector,
+    .ant-btn {
+        min-height: 44px;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    /* Better mobile form spacing */
+    .ant-form-item {
+        margin-bottom: 16px;
+    }
+    
+    /* Improve select dropdowns on mobile */
+    .ant-select-dropdown {
+        font-size: 16px;
+    }
+    
+    /* Make phone input more touch-friendly */
+    .ant-input-group-addon {
+        padding: 0 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Even larger touch targets for very small screens */
+    .ant-input,
+    .ant-select-selector,
+    .ant-btn {
+        min-height: 48px;
+        font-size: 16px;
+    }
+    
+    /* Compact form spacing for small screens */
+    .ant-form-item {
+        margin-bottom: 12px;
+    }
+    
+    /* Full width buttons on mobile */
+    .ant-btn {
+        width: 100%;
+        margin-top: 1rem;
+    }
 }
 
